@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shopkeeper : Interactable
 {
-    public override void Interact()
+    public override void Interact(Player player)
     {
         Debug.Log("hello!");
     }

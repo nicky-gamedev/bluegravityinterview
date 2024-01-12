@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    [SerializeField] private Player _player;
     private List<Interactable> _interactablesInArea = new List<Interactable>();
 
     private void Update()
@@ -13,7 +14,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             foreach (Interactable interactable in _interactablesInArea)
             {
-                interactable.Interact();
+                interactable.Interact(_player);
             }
         }
     }

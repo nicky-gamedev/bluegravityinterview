@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private Player _player;
     [SerializeField] private Animator[] _animators;
     private static readonly int IsWalking = Animator.StringToHash("IsWalking");
     private static readonly int PlayerXAxis = Animator.StringToHash("PlayerXAxis");
@@ -15,11 +15,11 @@ public class PlayerAnimator : MonoBehaviour
     {
         foreach (Animator anim in _animators)
         {
-            anim.SetBool(IsWalking, _playerMovement.IsPlayerWalking);
-            if (_playerMovement.IsPlayerWalking)
+            anim.SetBool(IsWalking, _player.Movement.IsPlayerWalking);
+            if (_player.Movement.IsPlayerWalking)
             {
-                anim.SetFloat(PlayerXAxis, _playerMovement.MovementDirection.x);
-                anim.SetFloat(PlayerYAxis, _playerMovement.MovementDirection.y);
+                anim.SetFloat(PlayerXAxis, _player.Movement.MovementDirection.x);
+                anim.SetFloat(PlayerYAxis, _player.Movement.MovementDirection.y);
             }
         }
     }
