@@ -18,8 +18,8 @@ public class PlayerAnimator : MonoBehaviour
             anim.SetBool(IsWalking, _player.Movement.IsPlayerWalking);
             if (_player.Movement.IsPlayerWalking)
             {
-                anim.SetFloat(PlayerXAxis, _player.Movement.MovementDirection.x);
-                anim.SetFloat(PlayerYAxis, _player.Movement.MovementDirection.y);
+                anim.SetFloat(PlayerXAxis, _player.Movement.Direction.x);
+                anim.SetFloat(PlayerYAxis, _player.Movement.Direction.y);
             }
         }
     }

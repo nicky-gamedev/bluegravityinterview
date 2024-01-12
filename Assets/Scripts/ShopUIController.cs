@@ -33,8 +33,6 @@ public class ShopUIController : MonoBehaviour
         hasCreatedShop = true;
     }
 
-
-
     public void OnBuyClick(Item item)
     {
         if (ShopManager.GetInstance().TryBuy(item, _inventory))
