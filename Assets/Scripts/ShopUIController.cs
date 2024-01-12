@@ -7,6 +7,7 @@ public class ShopUIController : MonoBehaviour
     private PlayerInventory _inventory;
     [SerializeField] private ItemDatabase _itemDB;
     [SerializeField] private GameObject _itemViewerPrefab;
+    [SerializeField] private PlayerInventoryUIController _playerInventoryUI;
     [SerializeField] private RectTransform contentInventory;
     [SerializeField] private RectTransform contentStore;
 
@@ -16,22 +17,8 @@ public class ShopUIController : MonoBehaviour
     {
         gameObject.SetActive(true);
         _inventory = player.Inventory;
-        UpdateAndPopulateInventory();
+        _playerInventoryUI.Initialize(player, true);
         PopulateStore();
-    }
-
-    public void UpdateAndPopulateInventory()
-    {
-        foreach (Transform transform in contentInventory)
-        {
-            Destroy(transform.gameObject);
-        }
-        
-        foreach (Item item in _inventory.items)
-        {
-            ItemViewer view = Instantiate(_itemViewerPrefab, contentInventory).GetComponent<ItemViewer>();
-            view.Initialize(item, () => { OnSellClick(item);}, "Sell");
-        }
     }
 
     private void PopulateStore()
@@ -46,22 +33,19 @@ public class ShopUIController : MonoBehaviour
         hasCreatedShop = true;
     }
 
-    public void OnSellClick(Item item)
-    {
-        ShopManager.GetInstance().Sell(item, _inventory);
-        UpdateAndPopulateInventory();
-    }
+
 
     public void OnBuyClick(Item item)
     {
         if (ShopManager.GetInstance().TryBuy(item, _inventory))
         {
-            UpdateAndPopulateInventory();
+            _playerInventoryUI.UpdateInventory(true);
         }
     }
 
     public void Close()
     {
         gameObject.SetActive(false);
+        _playerInventoryUI.Close();
     }
 }
