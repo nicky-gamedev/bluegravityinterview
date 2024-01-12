@@ -3,28 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IInteractable
-{
-    public void Interact();
-}
-
 public class PlayerInteraction : MonoBehaviour
 {
-    public List<IInteractable> interactablesInArea;
-    
-    private void OnTriggerEnter(Collider other)
+    private List<Interactable> _interactablesInArea = new List<Interactable>();
+
+    private void Update()
     {
-        if (other.gameObject.TryGetComponent(out IInteractable interactable))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            interactablesInArea.Add(interactable);
+            foreach (Interactable interactable in _interactablesInArea)
+            {
+                interactable.Interact();
+            }
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.TryGetComponent(out IInteractable interactable))
+        if (other.gameObject.TryGetComponent(out Interactable interactable))
         {
-            interactablesInArea.Remove(interactable);
+            _interactablesInArea.Add(interactable);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.TryGetComponent(out Interactable interactable))
+        {
+            _interactablesInArea.Remove(interactable);
         }
     }
 }

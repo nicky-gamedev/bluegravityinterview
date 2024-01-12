@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shopkeeper : MonoBehaviour, IInteractable
+public class Shopkeeper : Interactable
 {
-    public void Interact()
+    public override void Interact()
     {
         Debug.Log("hello!");
     }
