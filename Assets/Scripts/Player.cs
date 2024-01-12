@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -6,4 +7,9 @@ public class Player : MonoBehaviour
     public PlayerAnimator Animator;
     public PlayerMovement Movement;
     public PlayerInteraction Interaction;
+
+    private void Awake()
+    {
+        Inventory = new PlayerInventory();
+    }
 }

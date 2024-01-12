@@ -2,7 +2,23 @@
 
 public class ShopManager 
 {
-    public void Buy(Item item, PlayerInventory inventory)
+    public ShopManager()
+    {
+        
+    }
+    
+    private static ShopManager _instance;
+    
+    public static ShopManager GetInstance()
+    {
+        if (_instance == null)
+        {
+            _instance = new ShopManager();
+        }
+        return _instance;
+    }
+    
+    public void TryBuy(Item item, PlayerInventory inventory)
     {
         if (!inventory.CanBuy(item.price)) return;
         inventory.AddItem(item);

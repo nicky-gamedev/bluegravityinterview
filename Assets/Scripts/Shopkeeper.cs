@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Shopkeeper : Interactable
 {
+    public ShopUIController shopUI;
+    
     public override void Interact(Player player)
     {
-        Debug.Log("hello!");
+        shopUI.Initialize(player);
     }
 }

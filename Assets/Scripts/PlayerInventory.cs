@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInventory
 {
     public int cash { get; private set; }
-    private List<Item> items;
+    public List<Item> items { get; private set; } = new List<Item>();
 
     public void AddItem(Item item)
     {
