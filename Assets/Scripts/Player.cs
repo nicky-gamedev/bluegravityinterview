@@ -11,5 +11,6 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Inventory = new PlayerInventory();
+        Inventory.AddCash(100);
     }
 }

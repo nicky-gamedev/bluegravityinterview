@@ -6,7 +6,7 @@ public class ShopUIController : MonoBehaviour
 {
     private PlayerInventory _inventory;
     [SerializeField] private ItemDatabase _itemDB;
-    [SerializeField] private ItemViewer _itemViewerPrefab;
+    [SerializeField] private GameObject _itemViewerPrefab;
     [SerializeField] private RectTransform contentInventory;
     [SerializeField] private RectTransform contentStore;
 
@@ -16,26 +16,31 @@ public class ShopUIController : MonoBehaviour
     {
         gameObject.SetActive(true);
         _inventory = player.Inventory;
-        PopulateInventory();
+        UpdateAndPopulateInventory();
         PopulateStore();
     }
 
-    public void PopulateInventory()
+    public void UpdateAndPopulateInventory()
     {
+        foreach (Transform transform in contentInventory)
+        {
+            Destroy(transform.gameObject);
+        }
+        
         foreach (Item item in _inventory.items)
         {
-            ItemViewer view = Instantiate(_itemViewerPrefab.gameObject, contentInventory).GetComponent<ItemViewer>();
-            view.Initialize(item, () => { OnSellClick(item);});
+            ItemViewer view = Instantiate(_itemViewerPrefab, contentInventory).GetComponent<ItemViewer>();
+            view.Initialize(item, () => { OnSellClick(item);}, "Sell");
         }
     }
 
     private void PopulateStore()
     {
         if(hasCreatedShop) return;
-        foreach (Item item in _inventory.items)
+        foreach (Item item in _itemDB.items)
         {
             ItemViewer view = Instantiate(_itemViewerPrefab.gameObject, contentStore).GetComponent<ItemViewer>();
-            view.Initialize(item, () => { OnBuyClick(item);});
+            view.Initialize(item, () => { OnBuyClick(item);}, "Buy");
         }
 
         hasCreatedShop = true;
@@ -44,19 +49,19 @@ public class ShopUIController : MonoBehaviour
     public void OnSellClick(Item item)
     {
         ShopManager.GetInstance().Sell(item, _inventory);
+        UpdateAndPopulateInventory();
     }
 
     public void OnBuyClick(Item item)
     {
-        ShopManager.GetInstance().TryBuy(item, _inventory);
+        if (ShopManager.GetInstance().TryBuy(item, _inventory))
+        {
+            UpdateAndPopulateInventory();
+        }
     }
 
     public void Close()
     {
-        foreach (Transform transform in contentInventory)
-        {
-            Destroy(transform.gameObject);
-        }
         gameObject.SetActive(false);
     }
 }

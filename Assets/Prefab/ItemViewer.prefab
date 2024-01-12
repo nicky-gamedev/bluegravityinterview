@@ -939,3 +939,4 @@ MonoBehaviour:
   _price: {fileID: 3878748898665043502}
   _name: {fileID: 2501974950087393671}
   _button: {fileID: 51959379286119770}
+  _buttonText: {fileID: 3215322451786719472}

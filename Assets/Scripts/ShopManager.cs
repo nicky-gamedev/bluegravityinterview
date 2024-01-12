@@ -18,11 +18,12 @@ public class ShopManager
         return _instance;
     }
     
-    public void TryBuy(Item item, PlayerInventory inventory)
+    public bool TryBuy(Item item, PlayerInventory inventory)
     {
-        if (!inventory.CanBuy(item.price)) return;
+        if (!inventory.CanBuy(item.price)) return false;
         inventory.AddItem(item);
         inventory.SubtractCash(item.price);
+        return true;
     }
 
     public void Sell(Item item, PlayerInventory inventory)
