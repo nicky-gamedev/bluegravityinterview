@@ -12,4 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba44f96475304c8ea9a673a777735652, type: 3}
   m_Name: ItemDatabase
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - icon: {fileID: -809383293, guid: ca3ad92ec07a830418d2c0b4bf5f0e97, type: 3}
+    price: 20
+    name: Wizard Hat
+    associatedController: {fileID: 0}
+  - icon: {fileID: 148221013, guid: 132bb6976c9f1a645b2622205e1f2785, type: 3}
+    price: 15
+    name: Ushanka
+    associatedController: {fileID: 0}
+  - icon: {fileID: 280022444, guid: 9b79f541ddec35644bd82d026c6983b7, type: 3}
+    price: 50
+    name: Suit
+    associatedController: {fileID: 0}
+  - icon: {fileID: 1610489409, guid: 285d45e3728600d4bb17708d8d0e5312, type: 3}
+    price: 80
+    name: Armor
+    associatedController: {fileID: 0}
