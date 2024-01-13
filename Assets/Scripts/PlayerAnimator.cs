@@ -7,6 +7,7 @@ public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private Animator[] _animators;
+    [SerializeField] private SpriteRenderer[] _renderers;
     private static readonly int IsWalking = Animator.StringToHash("IsWalking");
     private static readonly int PlayerXAxis = Animator.StringToHash("PlayerXAxis");
     private static readonly int PlayerYAxis = Animator.StringToHash("PlayerYAxis");
@@ -30,5 +31,11 @@ public class PlayerAnimator : MonoBehaviour
         _animators[(int)item.type].runtimeAnimatorController = item.associatedController;
         _animators[(int)item.type].SetFloat(PlayerXAxis, _animators[0].GetFloat(PlayerXAxis));
         _animators[(int)item.type].SetFloat(PlayerYAxis, _animators[0].GetFloat(PlayerYAxis));
+    }
+
+    public void DeleteAnimator(ItemType type)
+    {
+        _animators[(int)type].runtimeAnimatorController = null;
+        _renderers[(int)type].sprite = null;
     }
 }

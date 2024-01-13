@@ -75,5 +75,6 @@ public class PlayerInventoryUIController : MonoBehaviour
     {
         ShopManager.GetInstance().Sell(item, _player.Inventory);
         UpdateInventory(true);
+        _player.Animator.DeleteAnimator(item.type);
     }
 }
