@@ -25,7 +25,7 @@ BlendTree:
     m_DirectBlendParameter: PlayerYAxis
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: d0527f8a274f3c9429ba5fb4548864d5, type: 2}
+    m_Motion: {fileID: 7400000, guid: c53b3882f3de7d2409d9da055ff2a2ee, type: 2}
     m_Threshold: 0.6666667
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
@@ -33,7 +33,7 @@ BlendTree:
     m_DirectBlendParameter: PlayerYAxis
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: c53b3882f3de7d2409d9da055ff2a2ee, type: 2}
+    m_Motion: {fileID: 7400000, guid: d0527f8a274f3c9429ba5fb4548864d5, type: 2}
     m_Threshold: 1
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1

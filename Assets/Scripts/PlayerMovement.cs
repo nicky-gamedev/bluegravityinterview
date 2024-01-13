@@ -7,11 +7,12 @@ public class PlayerMovement : MonoBehaviour
     public bool IsPlayerWalking => Direction.magnitude != 0;
 
     [SerializeField] private float _speed;
-
+    [SerializeField] private Rigidbody2D rb2d;
 
     private void Update()
     {
         Direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        transform.Translate(Direction * Time.deltaTime * _speed);
+
+        rb2d.velocity = Direction * Time.deltaTime * _speed;
     }
 }

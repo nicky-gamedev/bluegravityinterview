@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 [Serializable]
@@ -10,7 +9,7 @@ public struct Item
     public int price;
     public string name;
     public ItemType type;
-    public AnimatorController associatedController;
+    public RuntimeAnimatorController associatedController;
 }
 
 public enum ItemType

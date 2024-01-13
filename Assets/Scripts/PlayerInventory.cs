@@ -8,7 +8,7 @@ public class PlayerInventory
     public int cash { get; private set; }
     public List<Item> items { get; private set; } = new List<Item>();
 
-    public UnityEvent onBalanceChange;
+    public UnityEvent onBalanceChange = new();
 
     public void AddItem(Item item)
     {
