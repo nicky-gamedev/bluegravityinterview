@@ -15,6 +15,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         foreach (Animator anim in _animators)
         {
+            if (anim.runtimeAnimatorController == null) continue;
             anim.SetBool(IsWalking, _player.Movement.IsPlayerWalking);
             if (_player.Movement.IsPlayerWalking)
             {
@@ -22,5 +23,10 @@ public class PlayerAnimator : MonoBehaviour
                 anim.SetFloat(PlayerYAxis, _player.Movement.Direction.y);
             }
         }
+    }
+
+    public void SwapAnimatorController(Item item)
+    {
+        _animators[(int)item.type].runtimeAnimatorController = item.associatedController;
     }
 }

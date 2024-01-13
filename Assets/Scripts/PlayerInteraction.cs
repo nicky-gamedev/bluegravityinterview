@@ -6,7 +6,8 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    private List<Interactable> _interactablesInArea = new List<Interactable>();
+    [SerializeField] private List<Interactable> _interactablesInArea = new List<Interactable>();
+    [SerializeField] private PlayerInventoryUIController _inventoryUIController;
 
     private void Update()
     {
@@ -16,6 +17,11 @@ public class PlayerInteraction : MonoBehaviour
             {
                 interactable.Interact(_player);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            _inventoryUIController.ToggleEquipMode(_player);
         }
     }
 
