@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerInventory
 {
     public int cash { get; private set; }
     public List<Item> items { get; private set; } = new List<Item>();
+
+    public UnityEvent onBalanceChange;
 
     public void AddItem(Item item)
     {
@@ -21,11 +24,13 @@ public class PlayerInventory
     public void AddCash(int amount)
     {
         cash += amount;
+        onBalanceChange?.Invoke();
     }
 
     public void SubtractCash(int amount)
     {
         cash -= amount;
+        onBalanceChange?.Invoke();
     }
 
     public bool CanBuy(int amount)

@@ -28,5 +28,7 @@ public class PlayerAnimator : MonoBehaviour
     public void SwapAnimatorController(Item item)
     {
         _animators[(int)item.type].runtimeAnimatorController = item.associatedController;
+        _animators[(int)item.type].SetFloat(PlayerXAxis, _animators[0].GetFloat(PlayerXAxis));
+        _animators[(int)item.type].SetFloat(PlayerYAxis, _animators[0].GetFloat(PlayerYAxis));
     }
 }

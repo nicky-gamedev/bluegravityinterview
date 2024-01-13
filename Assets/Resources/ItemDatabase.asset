@@ -16,16 +16,20 @@ MonoBehaviour:
   - icon: {fileID: -809383293, guid: ca3ad92ec07a830418d2c0b4bf5f0e97, type: 3}
     price: 20
     name: Wizard Hat
-    associatedController: {fileID: 0}
+    type: 1
+    associatedController: {fileID: 9100000, guid: 834611e5f66f37449967e0d7868c88fe, type: 2}
   - icon: {fileID: 148221013, guid: 132bb6976c9f1a645b2622205e1f2785, type: 3}
     price: 15
     name: Ushanka
-    associatedController: {fileID: 0}
+    type: 1
+    associatedController: {fileID: 9100000, guid: 7ae77c9059719fe48854df4f7ed41dd1, type: 2}
   - icon: {fileID: 280022444, guid: 9b79f541ddec35644bd82d026c6983b7, type: 3}
     price: 50
     name: Suit
-    associatedController: {fileID: 0}
+    type: 2
+    associatedController: {fileID: 9100000, guid: 723fb2f0573333d4ca9e7934a529085d, type: 2}
   - icon: {fileID: 1610489409, guid: 285d45e3728600d4bb17708d8d0e5312, type: 3}
     price: 80
     name: Armor
-    associatedController: {fileID: 0}
+    type: 2
+    associatedController: {fileID: 9100000, guid: 6be304b5d70e75c44b2eb086f3e7ea5b, type: 2}

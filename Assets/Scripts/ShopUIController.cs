@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ShopUIController : MonoBehaviour
@@ -8,8 +9,8 @@ public class ShopUIController : MonoBehaviour
     [SerializeField] private ItemDatabase _itemDB;
     [SerializeField] private GameObject _itemViewerPrefab;
     [SerializeField] private PlayerInventoryUIController _playerInventoryUI;
-    [SerializeField] private RectTransform contentInventory;
     [SerializeField] private RectTransform contentStore;
+    [SerializeField] private TextMeshProUGUI _balanceText;
 
     private bool hasCreatedShop = false;
     
@@ -17,8 +18,15 @@ public class ShopUIController : MonoBehaviour
     {
         gameObject.SetActive(true);
         _inventory = player.Inventory;
+        _inventory.onBalanceChange.AddListener(UpdateBalanceText);
+        UpdateBalanceText();
         _playerInventoryUI.Initialize(player, true);
         PopulateStore();
+    }
+
+    private void UpdateBalanceText()
+    {
+        _balanceText.text = $"Balance:\n{_inventory.cash}";
     }
 
     private void PopulateStore()
@@ -45,5 +53,6 @@ public class ShopUIController : MonoBehaviour
     {
         gameObject.SetActive(false);
         _playerInventoryUI.Close();
+        _inventory.onBalanceChange.RemoveListener(UpdateBalanceText);
     }
 }

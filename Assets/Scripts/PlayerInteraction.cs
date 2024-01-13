@@ -29,6 +29,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out Interactable interactable))
         {
+            interactable.Approach(_player);
             _interactablesInArea.Add(interactable);
         }
     }
